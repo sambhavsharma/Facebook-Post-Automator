@@ -1,0 +1,70 @@
+<!-- Default home page -->
+<script type="text/javascript">
+setTimeout(function sunrise () {
+    document.getElementsByClassName('header')[0].style.backgroundColor = '#118798';
+}, 0);
+</script>
+
+<div class="default-page">
+    <div class="main container clearfix">
+
+    <% if(typeof message !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success"><%= message%> </li>
+            </ul>
+    <% } %>
+
+    <% if(typeof error !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-danger"><%= error%> </li>
+            </ul>
+    <% } %>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <h3>Posts</h3>
+                </div>
+            </div>
+            <div class="row">
+
+            <% if(typeof posts !== 'undefined' && posts.length > 0) { %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th> Post Link</th>
+                    <th>Post Content</th>
+                    <th>Next Group</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    <% posts.forEach(function(post)  { %>
+                    <tr>
+                      <td><%= post.link %></td>
+                      <td><%= post.content %></td>
+                      <% if(post.seq.length > 0) { %>
+                        <td><%= post.seq[0] %></td>
+                      <% } else { %>
+                       <td> Posting Completed!</td>
+                      <% } %>
+                      <td>
+                        <form action="/post-list" method="post">
+                            <button class="btn btn-sm btn-danger" 
+                              type="submit" name="id" value="<%= post.id %>">
+                              Delete
+                            </button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+
+                </tbody>
+              </table>
+              <%} else { %>
+                    <p> No posts in the database!</p>
+                  <% } %>
+            </div>
+    </div>
+</div>

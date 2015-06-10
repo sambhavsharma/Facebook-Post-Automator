@@ -1,0 +1,64 @@
+<!-- Default home page -->
+<script type="text/javascript">
+setTimeout(function sunrise () {
+    document.getElementsByClassName('header')[0].style.backgroundColor = '#118798';
+}, 0);
+</script>
+
+<div class="default-page">
+    <div class="main container clearfix">
+
+    <% if(typeof message !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success"><%= message%> </li>
+            </ul>
+    <% } %>
+
+    <% if(typeof error !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-danger"><%= error%> </li>
+            </ul>
+    <% } %>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <h3>Groups</h3>
+                </div>
+            </div>
+            <div class="row">
+
+            <% if(typeof groups !== 'undefined' && groups.length > 0) { %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th> Group Name</th>
+                    <th>Group Id</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                   
+                    <% groups.forEach(function(group)  { %>
+                    <tr>
+                      <td><%= group.name %></td>
+                      <td><%= group.group_id %></td>
+                      <td>
+                        <form action="/group-list" method="post">
+                            <button class="btn btn-sm btn-danger" 
+                              type="submit" name="id" value="<%= group.id %>">
+                              Delete
+                            </button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+
+                </tbody>
+              </table>
+              <%} else { %>
+                    <p> No groups in the database!</p>
+                  <% } %>
+            </div>
+    </div>
+</div>

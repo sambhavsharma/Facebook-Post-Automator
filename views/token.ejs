@@ -1,0 +1,28 @@
+<!-- Default home page -->
+<script type="text/javascript">
+setTimeout(function sunrise () {
+    document.getElementsByClassName('header')[0].style.backgroundColor = '#118798';
+}, 0);
+</script>
+
+<div class="default-page">
+    <div class="main container clearfix">
+
+    <% if(typeof message !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success"><%= message%> </li>
+            </ul>
+    <% } %>
+
+    <% if(typeof error !== 'undefined') { %>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-danger"><%= error%> </li>
+            </ul>
+    <% } %>
+    
+    <a class="btn btn-primary" href="https://www.facebook.com/dialog/oauth?client_id=<%= sails.config.properties.facebook_app_id %>&redirect_uri=<%= sails.config.properties.facebook_redirect_uri %>&&display=popup&scope=user_groups,read_insights,publish_actions&response_type=code">
+        Get Access Token
+    </a>
+
+    </div>
+</div>

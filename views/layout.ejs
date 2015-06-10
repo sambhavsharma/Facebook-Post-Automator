@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Facebook Post Automator</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+    <!--  
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+        
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+            
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+
+    <!--
+      <link rel="stylesheet" href="/styles/bootstrap.min.css">
+      <script src="/js/jquery-2.1.4.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+    -->
+    <!-- <div class="default-page"> -->
+    <div class="header">
+        <h3 id="main-title" class="container" style="color: white;">
+            <%= __('Facebook Post Automator') %>
+        </h3>
+    </div>
+    <!-- </div> -->
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Post <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/post-add">Add</a></li>
+                <li><a href="/post-list">List</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Group <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/group-add">Add</a></li>
+                <li><a href="/group-list">List</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <!--SCRIPTS-->
+    <script src="/js/jquery-2.1.4.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!--SCRIPTS END-->
+    
+    <%- body %>
+
+  </body>
+</html>
