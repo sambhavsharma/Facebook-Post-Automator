@@ -1,7 +1,7 @@
 # Facebook-Post-Automator
 Automates Publishing of Posts on Groups
 
-# To find the group ID of a Facebook Group
+To find the group ID of a Facebook Group
 http://lookup-id.com/
 
 # Request to get access_token
