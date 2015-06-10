@@ -56,3 +56,21 @@ $ npm install
 Run Node Server (Alternatively it is suggested that you run forever on your production server)
 
 $ node app.js
+
+
+# How it works?
+You need to add Facebook Groups first and then start adding posts. Once you have everything in place call the /publish URL of the app and it will make a round of publishing posts on groups. In post-list view, you can see which post will be posted to which group in the next round.
+
+# Example Scenario:
+
+1. Let's say we add a group with id g1. This creates a document in database in collection sequence with doc_id=1 and a seq array which will look like this -> [g1]
+
+2. Now add groups g2 and g3. The seq array is updated to [g1,g2,g3].. This is our current sequence of publishing.
+
+3. Now let's say you add post p1. This post will get an execution seq [g1,g2,g3] and the seq array will now be rotated to [g2,g3,g1]
+
+4. Now if you add another post p2, it will get an execution sequence [g2,g3,g1] and the seq array will again be rotated and will become [g3,g1,g2] and so on.
+
+5. Everytime the /publish URL is called the posts with non empty seq arrays are fetched and the first element of the aaray is popped. This post is then published to the group with popped id, which competes one round of posting.
+
+6. Now you can call this URL via a cron job or any other scheduler.
